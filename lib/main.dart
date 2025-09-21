@@ -1,9 +1,12 @@
 import 'package:eshop/config/router/app_router.dart';
+import 'package:eshop/core/di/service_locator.dart';
 import 'package:flutter/material.dart';
 
 import 'config/router/routes.dart';
 
-void main() {
+void main() async{
+WidgetsFlutterBinding.ensureInitialized();
+setupDependencies();
   runApp(const MyApp());
 }
 

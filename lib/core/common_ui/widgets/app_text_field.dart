@@ -5,7 +5,7 @@ class AppTextField extends StatelessWidget {
   final String label;
   final bool obscureText;
   final TextEditingController controller;
-
+  final String? Function(String?)? validator;
   final Widget? suffixIcon;
   final Widget? prefixIcon;
   final String? errorText;
@@ -19,6 +19,7 @@ class AppTextField extends StatelessWidget {
     this.suffixIcon,
     this.prefixIcon,
     this.errorText,
+    this.validator,
   }) : super(key: key);
 
   @override
@@ -33,9 +34,10 @@ class AppTextField extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 8),
-        TextField(
+        TextFormField(
           controller: controller,
           obscureText: obscureText,
+          validator: validator,
           onTapOutside: (event) {
             FocusScope.of(context).unfocus();
           },
