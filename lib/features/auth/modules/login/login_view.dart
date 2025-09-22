@@ -36,29 +36,7 @@ class LoginView extends StatelessWidget {
                 // Email Field
                const LoginForms(),
 
-                const SizedBox(height: 20),
 
-                // Register link
-                Center(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text("Don’t have an account? "),
-                      GestureDetector(
-                        onTap: () {
-                          // Navigate to Register screen
-                        },
-                        child: const Text(
-                          "Register",
-                          style: TextStyle(
-                            color: Colors.blue,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                )
               ],
             ),
           ),

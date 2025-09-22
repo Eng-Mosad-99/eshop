@@ -6,7 +6,6 @@ class DioFactory {
   Dio get dio => _dio;
   DioFactory() : _dio = Dio() {
     _dio.options
-      // ..baseUrl = 'https://api.openweathermap.org/data/2.5/'
       ..connectTimeout = const Duration(minutes: 1)
       ..receiveTimeout = const Duration(minutes: 1)
       ..sendTimeout = const Duration(minutes: 5);
