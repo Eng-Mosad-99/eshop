@@ -1,3 +1,4 @@
+import 'package:eshop/features/auth/common/custom_elevated_button.dart';
 import 'package:eshop/features/auth/modules/login/cubit/login_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -72,54 +73,47 @@ class _LoginFormsState extends State<LoginForms> {
           const SizedBox(height: 20),
 
           // Login button
-          SizedBox(
-            width: double.infinity,
-            height: 50,
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.blue,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8)),
-              ),
-              onPressed: () {
-                if (formKey.currentState!.validate()) {
-                  context.read<LoginCubit>().login(
-                        body: LoginRequestBody(
-                          email: emailController.text,
-                          password: passwordController.text,
-                        ),
-                      );
-                }
-              },
-              child: const Text(
-                "Login",
-                style: TextStyle(fontSize: 18, color: Colors.white),
-              ),
-            ),
-          ),
-                          const SizedBox(height: 20),
-
-                // Register link
-                Center(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text("Don’t have an account? "),
-                      GestureDetector(
-                        onTap: () {
-                          // Navigate to Register screen
-                        },
-                        child: const Text(
-                          "Register",
-                          style: TextStyle(
-                            color: Colors.blue,
-                            fontWeight: FontWeight.bold,
+          BlocBuilder<LoginCubit, LoginState>(
+            builder: (context, state) {
+              return AppElevatedButton(
+                isLoading: state is LoginLoading,
+                title: "Login",
+                onPressed: () {
+                  if (formKey.currentState!.validate()) {
+                    context.read<LoginCubit>().login(
+                          body: LoginRequestBody(
+                            email: emailController.text,
+                            password: passwordController.text,
                           ),
-                        ),
-                      )
-                    ],
+                        );
+                  }
+                },
+              );
+            },
+          ),
+
+          const SizedBox(height: 20),
+          // Register link
+          Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text("Don’t have an account? "),
+                GestureDetector(
+                  onTap: () {
+                    // Navigate to Register screen
+                  },
+                  child: const Text(
+                    "Register",
+                    style: TextStyle(
+                      color: Colors.blue,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 )
+              ],
+            ),
+          )
         ],
       ),
     );
