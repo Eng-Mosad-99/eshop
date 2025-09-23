@@ -3,6 +3,8 @@ import 'package:eshop/features/auth/modules/login/cubit/login_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../config/router/routes.dart';
+
 class LoginBlocListener extends StatelessWidget {
   const LoginBlocListener({super.key});
 
@@ -13,6 +15,8 @@ class LoginBlocListener extends StatelessWidget {
       listener: (context, state) {
         if (state is LoginError) {
           AppDialog().showApiError(context, state.error);
+        }else if(state is LoginSuccess){
+          Navigator.pushNamedAndRemoveUntil(context, Routes.home, (route) => false);
         }
       },
     );
