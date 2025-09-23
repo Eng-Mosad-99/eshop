@@ -1,22 +1,22 @@
-
 class LoginResponse {
   final String accessToken;
-  final String expiresAtUtc;
   final String refreshToken;
+  final String expiresAtUtc;
 
   LoginResponse({
     required this.accessToken,
-    required this.expiresAtUtc,
     required this.refreshToken,
+    required this.expiresAtUtc,
   });
 
   factory LoginResponse.fromJson(Map<String, dynamic> json) {
     return LoginResponse(
-      accessToken: json['accessToken'],
-      expiresAtUtc: json['expiresAtUtc'],
-      refreshToken: json['refreshToken'],
+      accessToken: json['accessToken'] ?? '',
+      refreshToken: json['refreshToken'] ?? '',
+      expiresAtUtc: json['expiresAtUtc'] ?? '',
     );
   }
+
 
   Map<String, dynamic> toJson() => {
     'accessToken': accessToken,
