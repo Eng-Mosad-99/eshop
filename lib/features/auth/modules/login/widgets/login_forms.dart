@@ -1,5 +1,6 @@
 import 'package:eshop/features/auth/common/custom_elevated_button.dart';
 import 'package:eshop/features/auth/modules/login/cubit/login_cubit.dart';
+import 'package:eshop/features/auth/modules/login/widgets/login_bloc_listener.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -113,7 +114,8 @@ class _LoginFormsState extends State<LoginForms> {
                 )
               ],
             ),
-          )
+          ),
+          const LoginBlocListener(),
         ],
       ),
     );
